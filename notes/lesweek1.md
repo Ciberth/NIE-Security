@@ -132,3 +132,115 @@ Zie bvb "vaak veranderen van wachtwoord" + "lack of knowledge"
 
 ## Chapter 2: Basic concepts
 
+!! Security goals & protocols combinatie vraag is een belangrijke vraag op het examen voor inzicht in beide!
+Dus gegeven een security protocol, aan welk model voldoet die?
+
+**Network security model**
+
+### Confidentiality
+
+Alice gaat bericht sturen naar Bob, Carol of Trudy willen het onderscheppen, soms een derde partij (thrusted).
+
+**Data confidentiality** = data can only be read by those who are allowed to read that data. 
+
+Een "aanval" kan actief zijn of passief (eavesdropping). Als Carol het kan lezen dan is er geen confidentialiteit meer. 
+
+Als Carol het niet meer kan lezen maar wel nog kan zien dat Alice iets stuurt naar Bob is traffic flow niet ok maar confidentialiteit wel. 
+
+### Authenticatie
+
+**Authenticatie** = je hebt de juiste gegevens om in te loggen
+Dit is niet het zelfde als **identificatie** (hier is garandeer je dat dit de persoon in kwestie is).
+
+**Attribute authentication** -> vb prof die op minerva iets kan aanpassen ; studenten niet. 
+
+**Data-origin authentication** -> aantonen dat de data inderdaad van een specifieke bron afkomstig is. 
+
+Op het model -> Carol die zich voordoet als Alice. In dit geval is Alice niet geauthenticeerd. Oplossing is bvb security tokens.
+
+
+### Access control and authorisation 
+
+...
+
+### Data integriteit
+
+= de data is niet gewijzigd. Maw er is niets verwijderd/toegevoegd/...
++ je weet wnr het bericht niet geldig is.
+
+Op model -> "stel je moet betalen, wel betaal aan nen anderen" of "betaal meerdere keren"
+
+Oplossing: security token + seq. no.
+
+### Non-repudiation
+
+Verloochening. Je kan niet verloochenen dat een bepaald bericht verstuurd of ontvangen is. 
+
+### Availabilitiy
+
+Bvb. Carol gaat overmatig veel berichten sturen zodat bericht van Alice niet meer zichtbaar is.
+Als Carol vanuit meerdere bronnen stuurt is het veel moeilijker! (Distributed)
+
+### Attacks
+
+Passief: eavesdropping + traffic analysis
+Actief: DoS + replay + hijacking + ...
+
+**Soorten:**
+- Brute force
+- Crypt
+- ...
+
+
+**Categories:**
+- Ciphertext only
+- Known plaintext
+- Chosen plaintext
+- Chosen ciphertext
+- Chosen text
+
+**Hoe veilig kan je het systeem maken?**
+Je streeft in principe altijd naar het zodanig lang maken voor te kraken zoda als het lukt het dan niet meer interessant/relevant is. 
+
+
+### Symmetric encryption
+
+Zender en ontvanger gebruiken dezelfde sleutel --> vaak voor confidentialiteit/authentiteit.
+
+Example: Caesar Cipher
+
+GCUA VQ DTGCM - easy to break (shiften over 2)
+
+!!Weet dat die advanced methods (des, 3 des, aes, twofish....) weten wat/welke symmetrisch/assymmetrisch zijn.
+
+
+### Assymmetric encryption
+
+Public key bob en eigen Private key bob
+
+Grote voordeel is dat er geen uitwisseling meer moet zijn (Bob zet zijn publieke key online)
+Nadeel is dat het systeem complexer is en veel trager. Het is niet geschikt voor grote bestanden te encrypteren.
+
+1024 bits RSA is lager in security dan de 128 bits AES!! 
+
+Alles wat ge-encrypt is met private sleutel kan ge-decrypt worden met publieke sleutel. 
+Dus Alice stuurt dan weet bob da het van alice is, maar er is geen garantie dat enkel bob dit leest want iedereen kan ontcijferen. 
+
+Wel authentication maar geen confidentiality.
+
+Vb'n van assym: RSA, EIGamal, ECC, Diffie Hellman, ...
+
+### Hash-functies
+
+"Lange key wordt gemapt op korte hash" interessant bij check digits, error codes en natuurlijk security.
+
+Message digest = hash code
+
+Birthday-attack!
+
+**MAC** = Message integration codes
+... 
+gedeelde key om hash te maken vaak in combinatie met protocolen
+
+
+-> Test yourself!!
