@@ -1,6 +1,6 @@
 # Voorbereiding 17 oktober
 
-# Opmerkingen vorige labo!
+## Opmerkingen vorige labo!
 
 Op de .ssh mogen geen schrijfrechten voor de groep want anders kan een andere gebruiker zijn sleutel kopiëren in die van jou en zo hijacken. (dus nen chown 700)
 
@@ -83,7 +83,7 @@ sftp myname@files.myhost.com:documents/portfolio.zip /tmp
 ```
 
 [Sftp commandos](https://kb.iu.edu/d/akqg)
-[Sftp en ssh](https://www.computerhope.com/unix/sftp.htm)
+[Sftp en ssh](https://www.computerhope.com/unix/<sftp class="htm"></sftp>)
 
 **scp**
 
@@ -100,3 +100,69 @@ scp username@b:/path/to/file /path/to/destination
 ```
 
 [Bron](https://unix.stackexchange.com/questions/106480/how-to-copy-files-from-one-machine-to-another-using-ssh#106482)
+
+
+
+
+## Certificaten
+
+### Wat is de functie van een certificaat?
+
+De server bezit een certificaat die aantoont dat de server "veilig" is en dat voor clients hun browser zegt "ik ben wie ik ben". Daardoor kan men over https babbelen. Deze delen sleutels uit zonder een public-key authority. 
+
+### Welke stappen moet je volgen om een certificaat aan te vragen, indien het subject een server-programma is?
+
+Server moet een certificaat van een CA verkrijgen. (?)
+
+
+
+### Installatiestappen voor openssl en dergelijke
+
+[Centos https !!!](https://wiki.centos.org/HowTos/Https)
+
+0. Firewalls (?)
+1. Opzetten van nginx of apache waarschijnlijk -> nodige installeren via yum install nginx | httpd | ...
+1. Enablen/starten van services (nginx, sudo a2enmod ssl)
+2. Installeren van Openssl
+3. Virtualhosts maken (?)
+4. Sites definieren en activeren via ``sudo a2ensite mydomain.net`` 
+5. DNS fixen (?)	
+
+[Apache2](https://www.digicert.com/ssl-certificate-installation-ubuntu-server-with-apache2.htm)
+[Apache](https://www.digicert.com/ssl-certificate-installation-apache.htm)
+[Nginx](https://www.digicert.com/ssl-certificate-installation-nginx.htm)
+[Extra apache](https://httpd.apache.org/docs/2.0/ssl/ssl_intro.html)
+[extra openssl & dovecot](https://www.linux.com/learn/sysadmin/openssl-apache-and-dovecot)
+
+
+Virtualhosts vb
+
+```
+<VirtualHost *:80>
+    ServerName groep26.iii.hogent.be
+    DocumentRoot /var/www/html/groep26def
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName safe.groep26.iii.hogent.be
+    DocumentRoot /var/www/html/groep26safe
+    SSLEngine on
+    SSLCertificateFile /etc/httpd/conf/safe.groep26.iii.hogent.crt
+    SSLCertificateKeyFile /etc/httpd/conf/safe.groep26.iii.hogent.key
+</VirtualHost>
+
+```
+
+Als attribuut:
+
+``Redirect permanent http... https... ``(not sure if this works)
+
+
+### Self signed
+
+[Bron](https://www.linux.com/learn/creating-self-signed-ssl-certificates-apache-linux)
+
+```
+openssl req -x509
+
+```
