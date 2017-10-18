@@ -48,6 +48,20 @@ ssh -L 8888:fermatVM:22 root@fermat
 Je kan firewalls "ontwijken".
 
 
+
+DUS in labo:
+ssh -nNT -L 8888:fermatVM:22 gauss
+da is de tunnel die opgezet is
+en dan via nmap localhost kunde da zien
+ssh -p 8888 localhost
+en bij scp -P
+
+
+BORDNOTITIES:
+
+ssh -L 8888:192.168.51.1:22 root@gateway
+
+
 **Remote**
 Veronderstel nu dat de computers binnen jouw privaat netwerk van buitenuit niet bereikbaar zijn!
 
@@ -61,7 +75,9 @@ ssh -R 22:localhost:8888 root@fermat
 
 ```
 
+Toepassing
 Zo kan je van buitenaf toch aan je pc.
+
 
 
 ### 6. Bestandsbeheer
@@ -166,3 +182,18 @@ Als attribuut:
 openssl req -x509
 
 ```
+
+
+
+
+### In labo
+
+YUM INSTALL mod_ssl
+
+
+openssl req -x509
+-nodes -days 365
+-newkey rsa:2048
+-keyout test.key
+-out test.crt
+
