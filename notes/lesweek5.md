@@ -125,6 +125,62 @@ CBC: er is ook een IV = initialisiatie vector die wordt gebruikt zodat de eerste
 
 nadeel: 1 bit error zorgt voor volledige misvat op 1 blok en genereert ook 1 bit error in de volgende blok
 
+s-bit
+
+stream cipher eigenlijk we willen bijna bit per bit werken (dus byte per byte xorn)
+
+bij cbc werd je plaintext geencrypteerd en gedecrypteerd maar bij s-bit cfb dient u ciphertext als input en plaintext als output (dus het zelfde schema w gebruikt voor encryptie/decryptie)
+
+Examen: gegeven encryptie stel decryptie op
 
 
+s-bit output feedback
 
+grote voordeel zit bij bit errors (hier heb je maar 1 blok) bij het vorige nam je de fouten telkens mee (zeer interessant voor systemen met packetloss)
+
+
+CTR 
+
+werkt met een counter die altijd opgeteld w 
+zie slides
+
+
+Deze methodes worden ook gebruikt bij AES en andere symmetrische
+
+de sleutelgrootte vergelijken tussen twee systemen zegt neits
+
+
+DES nog veiliger maken -> DES meerdere keren na elkaar
+
+triple des werkt met 3 verschillende sleutels
+
+DES is zwaar achterhaald maar zeker niet nutteloos
+
+DES is gemaakt voor hardware, software implementaties zijn zeer inefficient
+
+### AES
+
+- Rijndael algoritme
+- wel veilig
+
+geschikt voor hard- en software implementaties
+
+
+## Assymetric
+
+### RSA
+
+De twee originele priemgetallen terugvinden is moeilijk!
+
+### Elliptic Curve Cryptografie
+
+ook veilig naar de toekomst toe (quantumcomputing)
+
+a = generator	
+
+de dot operatie gaat zeer snel en als je de eindsituatie weet kan je heel moeilijk afweten welke weg alles heeft afgelegd
+
+sneller en veiliger dan rsa
+mogelijk nadeel: nsa heeft hier wel inpact gehad, den RNG kan een backdoor hebben
+
+diffie hellman = elke sessie maakt nieuwe sleutels aan
