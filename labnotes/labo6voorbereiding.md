@@ -80,3 +80,47 @@ makemap hash /etc/mail/access.db < /etc/mail/access
 m4 /etc/mail/sendmail.mc > /etc/mail/sendmail.cf
 
 ```
+
+# In labo
+
+```
+yum install m4 sendmail senndmail-cf mailx
+
+yum rremove firewalld
+cat /etc/selinux/config
+SELINUX=disabled
+
+reboot
+
+
+# config
+# op einde do not load (dnl)
+m4 sendmail.mc > sendmail.cf
+
+systemctl restart sendmail
+
+
+journalctl -f --unit sendmail.service
+
+
+# toevoegen in /etc/mail/local-host-names
+groepxx.iii.hogent.be
+yyVM.groepxx.iii.hogent.be
+
+
+# in /etc/aliases
+
+first.last:tiwi1
+
+# generics
+
+tiwi1 first.last@...
+
+makemp hash genericstable < generics
+
+
+mail -vvv -f pop3://tiwi2@gaussvm
+
+```
+
+
