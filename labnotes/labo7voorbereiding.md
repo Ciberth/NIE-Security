@@ -43,9 +43,10 @@ session     required      pam_limits.so
 session     required      pam_unix.so
 ```
 
+### Module types
+
 **AUTH:**
 > Instructs application to prompt the user for identification such as password. It may set credentials and alsy grant privileges.
-
 
 **ACCOUNT:**
 > Checks password aging, limit access, may be used to limit system access based on system resources.
@@ -53,7 +54,36 @@ session     required      pam_unix.so
 **PASSWORD:**
 > Stacked with auth module. Responsible for updating the user authentication token, often a password.
 
+**SESSION:**
+> Provide functions before and after session.
 
+### Control flags
+
+**Required:**
+> Must return success. Even if false, execution still continues.
+
+**Requisite:**
+> Failure terminates execution.
+
+**Optional:**
+> Optional
+
+**Sufficient:**
+> If this succeeds, all others in the stack are ignored. 
+
+### PAM standard arguments
+
+**Debug**
+> Additional information to syslog.
+
+**No_warn**
+> No warning
+
+**Use_first_pass**
+> Will use password from previous module. 
+
+**Try_first_pass**
+> Same as above but it will prompt one time (for the user to retry) if it fails.
 
 - auth:
 	* pam_env: setting/unsetting environment variables
