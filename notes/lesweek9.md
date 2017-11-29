@@ -89,5 +89,5 @@ Fingerprint is niet revocable. Eens die gekend is dan kan iedereen da gebruiken.
 ### Security tokens
 
 Kan fysisch zijn maar ook niet fysisch. Voordeel al u security dingen worden extern uitgevoerd. Alle berekeningen blijven op de token. Vaak 2FA. Bezit + kennis.
-Nadeel ook blackboxes (bij biometry was da ook beetje) je weet niet echt altijd wat er under de hood zit/gebeurd.
 
+Nadeel ook blackboxes (bij biometry was da ook beetje) je weet niet echt altijd wat er under de hood zit/gebeurd.
